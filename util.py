@@ -4,7 +4,7 @@ import os
 import shlex, subprocess
 import json
 from flask import jsonify
-# verify status of os.system call
+
 verify_status = lambda status: True if status == 0 else False
 os.system('touch status | chmod +x status') # Create status file
 VINES_PATH = '/opt/vines/'
@@ -57,7 +57,7 @@ def get_bandwidth_usage(output):
     except:
         return None
 
-# Runs a shell command, checks for success or error and get command response data
+# Runs a shell command, checks for success or error and returns the command response data
 def run_shell_cmd(cmd):
 	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 	output, error = process.communicate()
