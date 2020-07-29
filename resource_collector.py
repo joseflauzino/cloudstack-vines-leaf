@@ -6,7 +6,7 @@ import time
 from subprocess import check_output
 
 # TODO: change to read this interval from a config file
-TIME_INTERVAL = 30.0
+TIME_INTERVAL = 5.0
 
 class ResourceCollector(object):
 
