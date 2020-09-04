@@ -122,7 +122,8 @@ def setsfcforwarding():
         port = rule['port']
 
         # Building commands lines
-        enable_forward_cmd = "sudo iptables -A FORWARD -d %s -j ACCEPT" % (last_vnf)
+        #enable_forward_cmd = "sudo iptables -A FORWARD -d %s -j ACCEPT" % (last_vnf)
+        enable_forward_cmd = "sudo iptables -A FORWARD -j ACCEPT"
         config_forward_cmd = "sudo iptables -t nat -A PREROUTING -p %s --dport %s -j DNAT --to %s" % (protocol, port, next_vnf)
 
         # Adding FORWARD rule
