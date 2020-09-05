@@ -70,10 +70,10 @@ def run_shell_cmd(cmd):
 # Get function status generically 
 def get_vnf_function_status(function_name):
 	# The status.sh script searches for PID of 'function_name' and returns 'Running' if found, otherwise 'Stopped'
-	cmd = "sudo FENDE/Scripts/status.sh %s" % function_name
+	cmd = "sudo FENDE/Scripts/status.sh "+function_name
 	response = run_shell_cmd(cmd)
 	if response['status']!="OK":
-		response['data'] = "Could not run status.sh script: %s" % response['data']
+		response['data'] = "Could not run status.sh script: " + response['data']
 		return response
 	return {"status":"OK","data":response['data']}
 
