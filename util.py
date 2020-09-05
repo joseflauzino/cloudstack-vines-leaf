@@ -17,7 +17,6 @@ def read_vnfd():
 
 def generate_cmd(cmd_path, script_name):
     cmd = "sh "+cmd_path+script_name
-    print "Cmd: %s" % cmd
     return cmd
 
 def run_cmd(cmd):
