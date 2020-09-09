@@ -22,7 +22,7 @@ def generate_cmd(cmd_path, script_name):
 def run_cmd(cmd):
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     output = process.communicate()
-    return output[0].rstrip("\n")
+    return output
 
 def get_memory_usage():
     try:
@@ -62,7 +62,6 @@ def run_shell_cmd(cmd):
 	output, error = process.communicate()
 	if error:
 		return {"status":"ERROR","data":error}
-	output = output.rstrip("\n")
 	if output == "":
 		output = "None"
 	return {"status":"OK","data":output}
