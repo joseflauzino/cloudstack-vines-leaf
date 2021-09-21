@@ -11,13 +11,13 @@ import time
 from util import *
 
 #======================================================
-# API Calls
+# API end-points
 #======================================================
 
 app = Eve()
 
 # -------- Basics (Begin) ----------
-@app.route('/api/emsstatus', methods=['GET'])
+@app.route('/api/vnf-exp-status', methods=['GET'])
 def ems_status():
     return "Running"
 # -------- Basics (End) ----------
@@ -46,7 +46,7 @@ def stop_function():
         is_running.close()
     return str(verify_status(status))
 
-@app.route('/api/running', methods=['GET'])
+@app.route('/api/status', methods=['GET'])
 def get_running():
     vnfd = read_vnfd()
     script_name = "get_function_status.sh "
@@ -57,7 +57,7 @@ def get_running():
     status = run_cmd("sh "+VINES_PATH+script_name+function_name)
     return str(status) # Running or Stopped
 
-@app.route('/api/push_vnfp', methods=['POST'])
+@app.route('/api/push-vnfp', methods=['POST'])
 def write_file():
     repo = VINES_PATH+'vnfp.zip'
     with open(repo, 'wb') as f:
@@ -102,7 +102,7 @@ def get_metrics():
 
 # -------- Service Function Chaining (Begin) ----------
 
-@app.route('/api/setsfcforwarding', methods=['POST'])
+@app.route('/api/set-sfc-forwarding', methods=['POST'])
 def setsfcforwarding():
 
     # parse data
@@ -139,7 +139,7 @@ def setsfcforwarding():
     return build_response("success","VNF classifiers have been configured")
 
 
-@app.route('/api/deletesfcforwarding', methods=['POST'])
+@app.route('/api/delete-sfc-forwarding', methods=['POST'])
 def deletesfcforwarding():
     # build command lines
     clean_iptables_cmd = "sudo iptables -F"
